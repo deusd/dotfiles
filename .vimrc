@@ -62,3 +62,26 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+set tabstop=4
+set shiftwidth=4
+set smartindent
+set expandtab
+set smarttab
+
+" status line at bottom of window
+set modeline
+set statusline=%F%m%r%h%w\ [\%03.3b]\ [\%02.2B]\ [%04l,%04v][%p%%]\ [%L]
+
+" show line numbers
+" set number
+
+syntax on
+colorscheme solarized
+set nowrap
+
+" better searching
+set incsearch
+set ignorecase
