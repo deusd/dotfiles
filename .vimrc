@@ -65,6 +65,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+
 set tabstop=4
 set shiftwidth=4
 set smartindent
@@ -79,9 +80,24 @@ set statusline=%F%m%r%h%w\ [\%03.3b]\ [\%02.2B]\ [%04l,%04v][%p%%]\ [%L]
 " set number
 
 syntax on
+let g:solarized_termcolors=256
+set t_Co=256 
+if has("unix")
+    let s:uname = system("uname -s")
+    if s:uname == "Darwin"
+        " Do Mac stuff here
+    else
+        set background=dark
+    endif
+endif
 colorscheme solarized
 set nowrap
 
 " better searching
 set incsearch
 set ignorecase
+
+" keymappings for saving in terminal
+nnoremap <c-s> :update<cr> 
+inoremap <c-s> <esc>:update<cr>a
+vnoremap <c-s> :<bs><bs><bs><bs><bs>update<cr>
