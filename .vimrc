@@ -109,3 +109,19 @@ set ignorecase
 nnoremap <c-s> :update<cr>
 inoremap <c-s> <esc>:update<cr>a
 vnoremap <c-s> :<bs><bs><bs><bs><bs>update<cr>
+
+" keymappings for switching betweek screens
+nnoremap <c-h> <esc><c-w>h
+nnoremap <c-j> <esc><c-w>j
+nnoremap <c-k> <esc><c-w>k
+nnoremap <c-l> <esc><c-w>l
+
+vnoremap <c-h> <esc><c-w>h
+vnoremap <c-j> <esc><c-w>j
+vnoremap <c-k> <esc><c-w>k
+vnoremap <c-l> <esc><c-w>l
+
+inoremap <c-h> <esc><c-w>h
+inoremap <c-j> <esc><c-w>j
+inoremap <c-k> <esc><c-w>k
+inoremap <c-l> <esc><c-w>l
