@@ -74,8 +74,8 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smartindent
 set expandtab
 set smarttab
@@ -106,6 +106,6 @@ set incsearch
 set ignorecase
 
 " keymappings for saving in terminal
-nnoremap <c-s> :update<cr> 
+nnoremap <c-s> :update<cr>
 inoremap <c-s> <esc>:update<cr>a
 vnoremap <c-s> :<bs><bs><bs><bs><bs>update<cr>
