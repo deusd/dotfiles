@@ -53,6 +53,12 @@ Plugin 'scrooloose/nerdtree'
 " coffeescript support
 Plugin 'kchmck/vim-coffee-script'
 
+" add git functionality to vim
+Plugin 'tpope/vim-fugitive'
+
+" git gutter support
+Plugin 'airblade/vim-gitgutter'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
