@@ -70,8 +70,8 @@ filetype plugin indent on    " required
 
 " auto update vimrc on save
 augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
 set tabstop=2
@@ -91,12 +91,12 @@ syntax on
 let g:solarized_termcolors=256
 set t_Co=256 
 if has("unix")
-    let s:uname = system("uname -s")
-    if s:uname == "Darwin"
-        " Do Mac stuff here
-    else
-        set background=dark
-    endif
+  let s:uname = system("uname -s")
+  if s:uname == "Darwin\n"
+    set bg=light
+  else
+    set background=dark
+  endif
 endif
 colorscheme solarized
 set nowrap
@@ -125,3 +125,6 @@ inoremap <c-h> <esc><c-w>h
 inoremap <c-j> <esc><c-w>j
 inoremap <c-k> <esc><c-w>k
 inoremap <c-l> <esc><c-w>l
+
+" ctrl-c to clipboard in visual mode
+vnoremap <c-c> "*y
