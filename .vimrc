@@ -59,6 +59,9 @@ Plugin 'tpope/vim-fugitive'
 " git gutter support
 Plugin 'airblade/vim-gitgutter'
 
+" emmet support
+Plugin 'mattn/emmet-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -98,12 +101,16 @@ let g:solarized_termcolors=256
 set t_Co=256 
 if has("unix")
   let s:uname = system("uname -s")
+  " *Unix stuff here
+
   if s:uname == "Darwin\n"
-    set bg=light
+    " Mac specific stuff here
   else
-    set background=dark
+    " Linux specific stuff here
   endif
 endif
+
+set background=dark
 colorscheme solarized
 set nowrap
 
@@ -132,5 +139,10 @@ inoremap <c-j> <esc><c-w>j
 inoremap <c-k> <esc><c-w>k
 inoremap <c-l> <esc><c-w>l
 
-" ctrl-c to clipboard in visual mode
+" ctrl-c and ctrl-v mappings
 vnoremap <c-c> "*y
+vnoremap <c-v> "*p
+inoremap <c-v> <esc>"*pi
+
+" file type mappings
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
