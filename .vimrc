@@ -86,7 +86,7 @@ augroup END " }
 set tabstop=2
 set shiftwidth=2
 set smartindent
-set expandtab
+" set expandtab
 set smarttab
 
 " status line at bottom of window
