@@ -62,6 +62,12 @@ Plugin 'airblade/vim-gitgutter'
 " emmet support
 Plugin 'mattn/emmet-vim'
 
+" ternjs for vim
+Plugin 'marijnh/tern_for_vim'
+
+" extend ternjs with meteor support
+Plugin 'Slava/tern-meteor'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -86,7 +92,7 @@ augroup END " }
 set tabstop=2
 set shiftwidth=2
 set smartindent
-" set expandtab
+set expandtab
 set smarttab
 
 " status line at bottom of window
