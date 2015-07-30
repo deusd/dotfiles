@@ -97,16 +97,18 @@ set statusline=%F%m%r%h%w\ [\%03.3b]\ [\%02.2B]\ [%04l,%04v][%p%%]\ [%L]
 " set number
 
 syntax on
-let g:solarized_termcolors=256
-set t_Co=256 
 if has("unix")
   let s:uname = system("uname -s")
   " *Unix stuff here
 
   if s:uname == "Darwin\n"
     " Mac specific stuff here
+		let g:solarized_termcolors=256
+		set t_Co=256 
   else
     " Linux specific stuff here
+		let g:solarized_termcolors=256
+		set t_Co=256 
   endif
 endif
 
@@ -117,6 +119,7 @@ set nowrap
 " better searching
 set incsearch
 set ignorecase
+set smartcase
 
 " keymappings for saving in terminal
 nnoremap <c-s> :update<cr>
@@ -143,6 +146,9 @@ inoremap <c-l> <esc><c-w>l
 vnoremap <c-c> "*y
 vnoremap <c-v> "*p
 inoremap <c-v> <esc>"*pi
+
+" indent file
+nnoremap <c-i> mmggVG='m 
 
 " file type mappings
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
