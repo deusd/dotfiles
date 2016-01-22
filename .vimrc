@@ -26,20 +26,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-"
 
 " Useful git features
 Plugin 'tpope/vim-fugitive'
@@ -56,6 +43,8 @@ Plugin 'tpope/vim-surround'
 " Ctrl-p sublime like file opening
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 " Put your non-Plugin stuff after this line
 
 syntax on       " syntax highlighting on by default
@@ -64,3 +53,21 @@ set sw=2        " set shift width
 set et          " expand tabs to spaces
 set si          " smart indent
 set number      " numbers on
+
+" auto update vimrc on save
+augroup reload_vimrc " {
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+" status line at bottom of window
+set modeline
+set statusline=%F%m%r%h%w\ [\%03.3b]\ [\%02.2B]\ [%04l,%04v][%p%%]\ [%L]
+
+" better searching
+set incsearch
+set ignorecase
+set smartcase
+
+" indent file
+nnoremap <c-i> mmggVG='m
