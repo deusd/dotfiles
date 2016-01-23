@@ -43,6 +43,12 @@ Plugin 'tpope/vim-surround'
 " Ctrl-p sublime like file opening
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" Directory style listing
+Plugin 'scrooloose/nerdtree'
+
+" Sublime style multi cursor
+Plugin 'terryma/vim-multiple-cursors'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
