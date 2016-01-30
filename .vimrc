@@ -49,6 +49,15 @@ Plugin 'scrooloose/nerdtree'
 " Sublime style multi cursor
 Plugin 'terryma/vim-multiple-cursors'
 
+" Auto close quotes, etc.
+Plugin 'Raimondi/delimitMate'
+
+" Add emmet
+Plugin 'mattn/emmet-vim'
+
+" Close tags with ctrl _
+Plugin 'vim-scripts/closetag.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
