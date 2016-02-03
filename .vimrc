@@ -58,6 +58,9 @@ Plugin 'mattn/emmet-vim'
 " Close tags with ctrl _
 Plugin 'vim-scripts/closetag.vim'
 
+" Solarized color scheme
+Plugin 'altercation/vim-colors-solarized'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
@@ -86,3 +89,9 @@ set smartcase
 
 " indent file
 nnoremap <c-i> mmggVG='m
+
+" colorscheme in gui mode
+if has('gui_running')
+  colorscheme solarized
+  set bg=dark
+endif
