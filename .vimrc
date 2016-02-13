@@ -93,5 +93,16 @@ nnoremap <c-i> mmggVG='m
 " colorscheme in gui mode
 if has('gui_running')
   colorscheme solarized
-  set bg=dark
+  set bg=light
 endif
+
+" navigate panes with one keystroke
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" more natural split behaviour
+set splitbelow
+set splitright
+
