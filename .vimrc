@@ -61,6 +61,9 @@ Plugin 'vim-scripts/closetag.vim'
 " Solarized color scheme
 Plugin 'altercation/vim-colors-solarized'
 
+" add repeat support for plugins
+Plugin 'tpope/vim-repeat'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
