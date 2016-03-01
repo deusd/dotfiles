@@ -99,7 +99,7 @@ nnoremap <c-i> mmggVG='m
 " colorscheme in gui mode
 if has('gui_running')
   colorscheme solarized
-  set bg=light
+  set bg=dark
 endif
 
 " navigate panes with one keystroke
@@ -112,3 +112,6 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" auto add space when hitting enter in brackets
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
