@@ -72,10 +72,16 @@ call vundle#end()            " required
 " Put your non-Plugin stuff after this line
 
 syntax on       " syntax highlighting on by default
+
+" indentation settings
 set ts=2        " set tab width
 set sw=2        " set shift width
 set et          " expand tabs to spaces
+filetype indent on
+set ai
 set si          " smart indent
+
+" line numbers
 set number      " numbers on
 
 " auto update vimrc on save
