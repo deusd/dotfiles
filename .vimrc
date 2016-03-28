@@ -121,6 +121,9 @@ nnoremap <c-i> mmggVG='m
 if has('gui_running')
   colorscheme solarized
   set bg=dark
+else
+  let g:solarized_termcolors = 256
+  colorscheme solarized
 endif
 
 " navigate panes with one keystroke
@@ -139,3 +142,6 @@ let delimitMate_expand_space = 1
 
 " enable handlebars abbr
 let g:mustache_abbreviations = 1
+
+" ignore dirs
+set wildignore+=*/node_modules/*
