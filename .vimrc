@@ -67,6 +67,21 @@ Plugin 'tpope/vim-repeat'
 " add support for comments
 Plugin 'tpope/vim-commentary'
 
+" auto completions
+Plugin 'Valloric/YouCompleteMe'
+
+" better JS syntax highlighting
+Plugin 'jelera/vim-javascript-syntax'
+
+" better indentation 
+Plugin 'pangloss/vim-javascript'
+
+" ternjs
+Plugin 'ternjs/tern_for_vim'
+
+" handlebars support
+Plugin 'sheerun/vim-polyglot'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
@@ -121,3 +136,6 @@ set splitright
 " auto add space when hitting enter in brackets
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
+
+" enable handlebars abbr
+let g:mustache_abbreviations = 1
