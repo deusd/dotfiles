@@ -145,3 +145,7 @@ let g:mustache_abbreviations = 1
 
 " ignore dirs
 set wildignore+=*/node_modules/*
+
+set backspace=indent,eol,start
+" leave some space when scrolling to top and bottom
+set scrolloff=5
