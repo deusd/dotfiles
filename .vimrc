@@ -55,9 +55,6 @@ Plugin 'Raimondi/delimitMate'
 " Add emmet
 Plugin 'mattn/emmet-vim'
 
-" Close tags with ctrl _
-Plugin 'vim-scripts/closetag.vim'
-
 " Solarized color scheme
 Plugin 'altercation/vim-colors-solarized'
 
