@@ -76,8 +76,11 @@ Plugin 'pangloss/vim-javascript'
 " ternjs
 Plugin 'ternjs/tern_for_vim'
 
-" handlebars support
-Plugin 'sheerun/vim-polyglot'
+" Coffescript support
+Plugin 'kchmck/vim-coffee-script'
+
+" React native support
+Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -144,5 +147,9 @@ let g:mustache_abbreviations = 1
 set wildignore+=*/node_modules/*
 
 set backspace=indent,eol,start
+
 " leave some space when scrolling to top and bottom
 set scrolloff=5
+
+" allow react native support in all js files
+let g:jsx_ext_required = 0
