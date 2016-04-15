@@ -82,6 +82,9 @@ Plugin 'kchmck/vim-coffee-script'
 " React native support
 Plugin 'mxw/vim-jsx'
 
+" Install ag support
+Plugin 'rking/ag.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
@@ -124,6 +127,7 @@ if has('gui_running')
 else
   let g:solarized_termcolors = 256
   colorscheme solarized
+  set bg=dark
 endif
 
 " navigate panes with one keystroke
@@ -146,6 +150,18 @@ let g:mustache_abbreviations = 1
 " ignore dirs
 set wildignore+=*/node_modules/*
 
+" ag for ctrlp
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 set backspace=indent,eol,start
 
 " leave some space when scrolling to top and bottom
@@ -153,3 +169,7 @@ set scrolloff=5
 
 " allow react native support in all js files
 let g:jsx_ext_required = 0
+
+" disable vim file backups
+set noswapfile
+
