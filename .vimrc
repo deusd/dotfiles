@@ -85,6 +85,15 @@ Plugin 'mxw/vim-jsx'
 " Install ag support
 Plugin 'rking/ag.vim'
 
+" Install cool status bar
+Plugin 'vim-airline/vim-airline'
+
+" Track the engine.
+" Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+" Plugin 'honza/vim-snippets'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
@@ -107,10 +116,6 @@ augroup reload_vimrc " {
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
-
-" status line at bottom of window
-set modeline
-set statusline=%F%m%r%h%w\ [\%03.3b]\ [\%02.2B]\ [%04l,%04v][%p%%]\ [%L]
 
 " better searching
 set incsearch
@@ -173,3 +178,5 @@ let g:jsx_ext_required = 0
 " disable vim file backups
 set noswapfile
 
+" autoclose scratch / preview window
+autocmd CompleteDone * pclose
