@@ -94,6 +94,9 @@ Plugin 'vim-airline/vim-airline'
 " Snippets are separated from the engine. Add this if you want them:
 " Plugin 'honza/vim-snippets'
 
+" Add easy motion for fast movement around files
+Plugin 'easymotion/vim-easymotion'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
