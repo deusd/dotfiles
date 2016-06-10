@@ -131,7 +131,7 @@ nnoremap <c-i> mmggVG='m
 " colorscheme in gui mode
 if has('gui_running')
   colorscheme solarized
-  set bg=dark
+  set bg=light
 else
   let g:solarized_termcolors = 256
   colorscheme solarized
