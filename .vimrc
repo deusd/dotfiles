@@ -83,7 +83,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 
 " Install ag support
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 
 " Install cool status bar
 Plugin 'vim-airline/vim-airline'
@@ -108,7 +108,7 @@ set ts=2        " set tab width
 set sw=2        " set shift width
 set et          " expand tabs to spaces
 filetype indent on
-set ai
+set ai          " auto indent"
 set si          " smart indent
 
 " line numbers
@@ -133,9 +133,9 @@ if has('gui_running')
   colorscheme solarized
   set bg=light
 else
-  let g:solarized_termcolors = 256
+  set background=dark
+  let g:solarized_termtrans = 1
   colorscheme solarized
-  set bg=dark
 endif
 
 " navigate panes with one keystroke
@@ -183,3 +183,15 @@ set noswapfile
 
 " autoclose scratch / preview window
 autocmd CompleteDone * pclose
+
+" show possible completions in tabs
+set wildmenu
+
+" wrap
+set nowrap
+
+" enable the mouse
+set mouse=a
+
+" line number bg color same as bg
+highlight clear LineNr
