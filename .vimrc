@@ -32,7 +32,7 @@ filetype plugin indent on    " required
 Plugin 'tpope/vim-fugitive'
 
 " Awesome rails commands
-Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-rails'
 
 " Tab completions
 Plugin 'ervandew/supertab'
@@ -68,9 +68,9 @@ Plugin 'tpope/vim-commentary'
 Plugin 'Valloric/YouCompleteMe'
 
 " better JS syntax highlighting
-Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'jelera/vim-javascript-syntax'
 
-" better indentation 
+" better indentation
 Plugin 'pangloss/vim-javascript'
 
 " ternjs
@@ -87,6 +87,12 @@ Plugin 'mileszs/ack.vim'
 
 " Install cool status bar
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" ftl support
+Plugin 'andreshazard/vim-freemarker'
+
+Plugin 'stephenway/postcss.vim'
 
 " Track the engine.
 " Plugin 'SirVer/ultisnips'
@@ -109,10 +115,13 @@ set sw=2        " set shift width
 set et          " expand tabs to spaces
 filetype indent on
 set ai          " auto indent"
-set si          " smart indent
+" set si          " smart indent
 
 " line numbers
 set number      " numbers on
+
+" map leader to ,
+let mapleader = ","
 
 " auto update vimrc on save
 augroup reload_vimrc " {
@@ -129,6 +138,10 @@ set smartcase
 nnoremap <c-i> mmggVG='m
 
 " colorscheme in gui mode
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+    set t_Co=256
+endif
+
 if has('gui_running')
   colorscheme solarized
   set bg=light
@@ -137,6 +150,10 @@ else
   let g:solarized_termtrans = 1
   colorscheme solarized
 endif
+
+" airline setup
+let g:airline_powerline_fonts = 1
+set laststatus=2
 
 " navigate panes with one keystroke
 nnoremap <C-J> <C-W><C-J>
@@ -157,6 +174,11 @@ let g:mustache_abbreviations = 1
 
 " ignore dirs
 set wildignore+=*/node_modules/*
+
+" force syntax
+au BufRead,BufNewFile *.tern-project set filetype=json
+au BufRead,BufNewFile *.bashrc set filetype=json
+au BufRead,BufNewFile *.ftl set filetype=freemarker
 
 " ag for ctrlp
 if executable('ag')
@@ -188,10 +210,35 @@ autocmd CompleteDone * pclose
 set wildmenu
 
 " wrap
-set nowrap
-
-" enable the mouse
-set mouse=a
+" set nowrap
 
 " line number bg color same as bg
 highlight clear LineNr
+
+" let g:airline_theme='solarized'
+
+" use ag instead of ack
+" if executable('ag')
+"   let g:ackprg = 'ag --vimgrep'
+" endif
+
+" don't skip over wrapped lines
+nmap j gj
+nmap k gk
+
+" NERDTree settings
+" map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <leader>e :NERDTreeFind<CR>
+nmap <leader>nt :NERDTreeFind<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=0
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=1
+let g:nerdtree_tabs_open_on_console_startup=1
+map <leader>n :NERDTreeToggle<CR>
+""close vim if only nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
