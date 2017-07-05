@@ -103,6 +103,9 @@ Plugin 'stephenway/postcss.vim'
 " Add easy motion for fast movement around files
 Plugin 'easymotion/vim-easymotion'
 
+" Tmux navigation
+Plugin 'christoomey/vim-tmux-navigator'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
