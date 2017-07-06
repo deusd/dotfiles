@@ -176,7 +176,11 @@ let delimitMate_expand_space = 1
 let g:mustache_abbreviations = 1
 
 " ignore dirs
-set wildignore+=*/node_modules/*
+if exists("g:ctrlp_user_command")
+  unlet g:ctrlp_user_command
+endif
+set wildignore+=*/node_modules/*,*/.tmp/*
+
 
 " force syntax
 au BufRead,BufNewFile *.tern-project set filetype=json
