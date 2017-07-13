@@ -70,17 +70,18 @@ Plugin 'Valloric/YouCompleteMe'
 " better JS syntax highlighting
 " Plugin 'jelera/vim-javascript-syntax'
 
-" better indentation
-Plugin 'pangloss/vim-javascript'
-
 " ternjs
-Plugin 'ternjs/tern_for_vim'
+Plugin 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx']  }
+
+" better indentation
+Plugin 'gavocanov/vim-js-indent', { 'for': ['javascript', 'javascript.jsx']  }
+Plugin 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx']  }
+
+" React native support
+Plugin 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx']  }
 
 " Coffescript support
 Plugin 'kchmck/vim-coffee-script'
-
-" React native support
-Plugin 'mxw/vim-jsx'
 
 " Install ag support
 Plugin 'mileszs/ack.vim'
@@ -186,6 +187,7 @@ set wildignore+=*/node_modules/*,*/.tmp/*
 au BufRead,BufNewFile *.tern-project set filetype=json
 au BufRead,BufNewFile *.bashrc set filetype=json
 au BufRead,BufNewFile *.ftl set filetype=freemarker
+au BufRead,BufNewFile *.js set filetype=javascript.jsx
 
 " ag for ctrlp
 if executable('ag')
