@@ -107,6 +107,11 @@ Plugin 'easymotion/vim-easymotion'
 " Tmux navigation
 Plugin 'christoomey/vim-tmux-navigator'
 
+" syntastic
+Plugin 'vim-syntastic/syntastic'
+
+"
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Put your non-Plugin stuff after this line
@@ -249,5 +254,32 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=1
 let g:nerdtree_tabs_open_on_console_startup=1
 map <leader>n :NERDTreeToggle<CR>
+
 ""close vim if only nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" syntastic setup
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height=5
+
+let g:syntastic_javascript_checkers = ['eslint'] "Use eslint for syntax checking
+
+set autoread
+if executable('node_modules/.bin/eslint')
+  let b:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+  " autofix with eslint
+  let g:syntastic_javascript_eslint_args = ['--fix']
+  function! SyntasticCheckHook(errors)
+    checktime
+  endfunction
+endif
+
