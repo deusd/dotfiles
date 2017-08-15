@@ -31,9 +31,6 @@ filetype plugin indent on    " required
 " Useful git features
 Plugin 'tpope/vim-fugitive'
 
-" Awesome rails commands
-" Plugin 'tpope/vim-rails'
-
 " Tab completions
 Plugin 'ervandew/supertab'
 
@@ -67,9 +64,6 @@ Plugin 'tpope/vim-commentary'
 " auto completions
 Plugin 'Valloric/YouCompleteMe'
 
-" better JS syntax highlighting
-" Plugin 'jelera/vim-javascript-syntax'
-
 " ternjs
 Plugin 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx']  }
 
@@ -80,12 +74,6 @@ Plugin 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx']  }
 " React native support
 Plugin 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx']  }
 
-" Coffescript support
-Plugin 'kchmck/vim-coffee-script'
-
-" Install ag support
-Plugin 'mileszs/ack.vim'
-
 " Install cool status bar
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -95,12 +83,6 @@ Plugin 'andreshazard/vim-freemarker'
 
 Plugin 'stephenway/postcss.vim'
 
-" Track the engine.
-" Plugin 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-" Plugin 'honza/vim-snippets'
-
 " Add easy motion for fast movement around files
 Plugin 'easymotion/vim-easymotion'
 
@@ -109,6 +91,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " syntastic
 Plugin 'vim-syntastic/syntastic'
+
+" faster file search
+Plugin 'mileszs/ack.vim'
 
 "
 
@@ -181,30 +166,26 @@ let delimitMate_expand_space = 1
 " enable handlebars abbr
 let g:mustache_abbreviations = 1
 
-" ignore dirs
+" Ignore some folders and files for CtrlP indexing
 if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
 endif
-set wildignore+=*/node_modules/*,*/.tmp/*
+
+if exists("g:ctrlp_custom_ignore")
+  unlet g:ctrlp_custom_ignore
+endif
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
 
 
 " force syntax
 au BufRead,BufNewFile *.tern-project set filetype=json
 au BufRead,BufNewFile *.bashrc set filetype=json
 au BufRead,BufNewFile *.ftl set filetype=freemarker
-au BufRead,BufNewFile *.js set filetype=javascript.jsx
-
-" ag for ctrlp
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+" au BufRead,BufNewFile *.js set filetype=javascript.jsx
 
 set backspace=indent,eol,start
 
@@ -230,11 +211,6 @@ set wildmenu
 highlight clear LineNr
 
 " let g:airline_theme='solarized'
-
-" use ag instead of ack
-" if executable('ag')
-"   let g:ackprg = 'ag --vimgrep'
-" endif
 
 " don't skip over wrapped lines
 nmap j gj
@@ -271,15 +247,23 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
 
-let g:syntastic_javascript_checkers = ['eslint'] "Use eslint for syntax checking
+let g:syntastic_javascript_eslint_exe='node_modules/.bin/eslint' "Use eslint for syntax checking
 
-set autoread
-if executable('node_modules/.bin/eslint')
-  let b:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
-  " autofix with eslint
-  let g:syntastic_javascript_eslint_args = ['--fix']
-  function! SyntasticCheckHook(errors)
-    checktime
-  endfunction
+" autofix with eslint
+let g:syntastic_javascript_eslint_args = ['--fix']
+function! SyntasticCheckHook(errors)
+  checktime
+endfunction
+
+" ag for ctrlp
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 endif
 
