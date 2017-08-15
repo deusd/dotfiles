@@ -91,6 +91,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " syntastic
 Plugin 'vim-syntastic/syntastic'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
 
 " faster file search
 Plugin 'mileszs/ack.vim'
@@ -235,9 +236,9 @@ map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " syntastic setup
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
@@ -247,9 +248,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
 
-let g:syntastic_javascript_eslint_exe='node_modules/.bin/eslint' "Use eslint for syntax checking
+let g:syntastic_javascript_checkers=['eslint']
 
 " autofix with eslint
+set autoread
+" let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_javascript_eslint_args = ['--fix']
 function! SyntasticCheckHook(errors)
   checktime
