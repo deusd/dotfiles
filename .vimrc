@@ -134,6 +134,7 @@ set scrolloff=5
 highlight clear LineNr
 
 " incremental search
+set ignorecase
 set incsearch
 
 " don't skip over wrapped lines
