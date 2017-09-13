@@ -1,154 +1,111 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Make sure you use single quotes
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-filetype plugin indent on    " required
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" Useful git features
-Plugin 'tpope/vim-fugitive'
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" Tab completions
-Plugin 'ervandew/supertab'
+" Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-" Surrounds with chars
-Plugin 'tpope/vim-surround'
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
 
-" Ctrl-p sublime like file opening
-Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
-" Directory style listing
-Plugin 'scrooloose/nerdtree'
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" Sublime style multi cursor
-Plugin 'terryma/vim-multiple-cursors'
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
 
-" Auto close quotes, etc.
-Plugin 'Raimondi/delimitMate'
+" ------ Plugins below here ------ "
+" js jsx syntax
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
-" Add emmet
-Plugin 'mattn/emmet-vim'
+" intellisense
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
-" Solarized color scheme
-Plugin 'altercation/vim-colors-solarized'
+" awesome tpope plugins
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 
-" add repeat support for plugins
-Plugin 'tpope/vim-repeat'
+" file system stuff
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
 
-" add support for comments
-Plugin 'tpope/vim-commentary'
+" faster searching
+Plug 'mileszs/ack.vim'
 
-" auto completions
-Plugin 'Valloric/YouCompleteMe'
+" close pairs
+Plug 'jiangmiao/auto-pairs'
 
-" ternjs
-Plugin 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx']  }
+" linting
+Plug 'vim-syntastic/syntastic'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 
-" better indentation
-Plugin 'gavocanov/vim-js-indent', { 'for': ['javascript', 'javascript.jsx']  }
-Plugin 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx']  }
+" status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-" React native support
-Plugin 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx']  }
+" color scheme
+Plug 'altercation/vim-colors-solarized'
+Plug 'junegunn/seoul256.vim'
+Plug 'jnurmine/Zenburn'
+Plug 'ajmwagar/vim-deus'
 
-" Install cool status bar
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Initialize plugin system
+call plug#end()
 
-" ftl support
-Plugin 'andreshazard/vim-freemarker'
+" basic settings
+set number
+syntax on
+set shiftwidth=2
+set tabstop=2
+set smartindent
+set autoindent
+set expandtab
 
-Plugin 'stephenway/postcss.vim'
+" colorscheme
+set background=dark
+colorscheme seoul256
 
-" Add easy motion for fast movement around files
-Plugin 'easymotion/vim-easymotion'
-
-" Tmux navigation
-Plugin 'christoomey/vim-tmux-navigator'
-
-" syntastic
-Plugin 'vim-syntastic/syntastic'
-Plugin 'mtscout6/syntastic-local-eslint.vim'
-
-" faster file search
-Plugin 'mileszs/ack.vim'
-
-"
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-" Put your non-Plugin stuff after this line
-
-syntax on       " syntax highlighting on by default
-
-" indentation settings
-set ts=2        " set tab width
-set sw=2        " set shift width
-set et          " expand tabs to spaces
-filetype indent on
-set ai          " auto indent"
-" set si          " smart indent
-
-" line numbers
-set number      " numbers on
-
-" map leader to ,
-let mapleader = ","
-
-" auto update vimrc on save
+" reload on save
 augroup reload_vimrc " {
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
-" better searching
-set incsearch
-set ignorecase
-set smartcase
+" jsx in js
+let g:jsx_ext_required = 0
 
-" indent file
-nnoremap <c-i> mmggVG='m
+" linting
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='zenburn'
+let g:airline_solarized_bg='dark'
 
-" colorscheme in gui mode
-if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-    set t_Co=256
+" faster searching
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
 endif
-
-if has('gui_running')
-  colorscheme solarized
-  set bg=light
-else
-  set background=dark
-  let g:solarized_termtrans = 1
-  colorscheme solarized
-endif
-
-" airline setup
-let g:airline_powerline_fonts = 1
-set laststatus=2
 
 " navigate panes with one keystroke
 nnoremap <C-J> <C-W><C-J>
@@ -160,64 +117,31 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-" auto add space when hitting enter in brackets
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-
-" enable handlebars abbr
-let g:mustache_abbreviations = 1
-
-" Ignore some folders and files for CtrlP indexing
-if exists("g:ctrlp_user_command")
-  unlet g:ctrlp_user_command
-endif
-
-if exists("g:ctrlp_custom_ignore")
-  unlet g:ctrlp_custom_ignore
-endif
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-  \ }
-
-
-" force syntax
-au BufRead,BufNewFile *.tern-project set filetype=json
-au BufRead,BufNewFile *.bashrc set filetype=json
-au BufRead,BufNewFile *.ftl set filetype=freemarker
-" au BufRead,BufNewFile *.js set filetype=javascript.jsx
-
+" backspace deletes indents
 set backspace=indent,eol,start
-
-" leave some space when scrolling to top and bottom
-set scrolloff=5
-
-" allow react native support in all js files
-let g:jsx_ext_required = 0
 
 " disable vim file backups
 set noswapfile
 
-" autoclose scratch / preview window
-autocmd CompleteDone * pclose
-
 " show possible completions in tabs
 set wildmenu
 
-" wrap
-" set nowrap
+" leave some space when scrolling to top and bottom
+set scrolloff=5
 
 " line number bg color same as bg
 highlight clear LineNr
 
-" let g:airline_theme='solarized'
+" incremental search
+set incsearch
 
 " don't skip over wrapped lines
 nmap j gj
 nmap k gk
 
-" NERDTree settings
+" remap leader
+let mapleader=","
+
 " map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
@@ -235,29 +159,6 @@ map <leader>n :NERDTreeToggle<CR>
 ""close vim if only nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" syntastic setup
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height=5
-
-let g:syntastic_javascript_checkers=['eslint']
-
-" autofix with eslint
-set autoread
-" let g:syntastic_mode_map = { 'mode': 'passive' }
-let g:syntastic_javascript_eslint_args = ['--fix']
-function! SyntasticCheckHook(errors)
-  checktime
-endfunction
-
 " ag for ctrlp
 if executable('ag')
   " Use ag over grep
@@ -269,4 +170,26 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+" syntastic setup
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+
+let g:syntastic_javascript_checkers = ['eslint']
 
