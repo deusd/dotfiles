@@ -99,6 +99,7 @@ let g:jsx_ext_required = 0
 
 " linting
 let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='zenburn'
 let g:airline_solarized_bg='dark'
 
