@@ -98,7 +98,6 @@ augroup END " }
 let g:jsx_ext_required = 0
 
 " linting
-let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='zenburn'
 let g:airline_solarized_bg='dark'
@@ -194,4 +193,8 @@ highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
 let g:syntastic_javascript_checkers = ['eslint']
+
+" tern setup
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
 
