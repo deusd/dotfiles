@@ -72,6 +72,10 @@ Plug 'junegunn/seoul256.vim'
 Plug 'jnurmine/Zenburn'
 Plug 'ajmwagar/vim-deus'
 
+" css
+Plug 'alexlafroscia/postcss-syntax.vim'
+Plug 'chrisbra/Colorizer'
+
 " Initialize plugin system
 call plug#end()
 
@@ -113,6 +117,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" open new tab
+nnoremap <C-t> :tabnew<Return>
+inoremap <C-t> <Esc>:tabnew<Return>
+
 " more natural split behaviour
 set splitbelow
 set splitright
@@ -150,11 +158,11 @@ let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
+" let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=1
-let g:nerdtree_tabs_open_on_console_startup=1
+" let NERDTreeKeepTreeInNewTab=1
+" let g:nerdtree_tabs_open_on_gui_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
 map <leader>n :NERDTreeToggle<CR>
 
 ""close vim if only nerdtree
@@ -191,6 +199,17 @@ highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
+
+" @TODO make lint fixing run before save to prevent double write
+set autoread
+
+let g:syntastic_javascript_checkers = ['eslint']
+
+" autofix with eslint
+let g:syntastic_javascript_eslint_args = ['--fix']
+function! SyntasticCheckHook(errors)
+  checktime
+endfunction
 
 let g:syntastic_javascript_checkers = ['eslint']
 
