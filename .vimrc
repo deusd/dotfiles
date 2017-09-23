@@ -76,11 +76,14 @@ Plug 'ajmwagar/vim-deus'
 Plug 'alexlafroscia/postcss-syntax.vim'
 Plug 'chrisbra/Colorizer'
 
+" keep padding with no number
+Plug 'haya14busa/vim-keeppad'
+
 " Initialize plugin system
 call plug#end()
 
 " basic settings
-set number
+set nonumber
 syntax on
 set shiftwidth=2
 set tabstop=2
