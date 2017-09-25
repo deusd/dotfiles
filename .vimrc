@@ -59,8 +59,7 @@ Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 
 " linting
-Plug 'vim-syntastic/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'w0rp/ale'
 
 " status line
 Plug 'vim-airline/vim-airline'
@@ -183,38 +182,16 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" syntastic setup
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+""" Ale setup (linting)
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
+let g:airline#extensions#ale#enabled = 1
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-
-" @TODO make lint fixing run before save to prevent double write
-set autoread
-
-let g:syntastic_javascript_checkers = ['eslint']
-
-" autofix with eslint
-let g:syntastic_javascript_eslint_args = ['--fix']
-function! SyntasticCheckHook(errors)
-  checktime
-endfunction
-
-let g:syntastic_javascript_checkers = ['eslint']
+" TODO add keys for this
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " tern setup
 let g:tern_map_keys=1
