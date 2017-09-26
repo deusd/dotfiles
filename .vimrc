@@ -70,6 +70,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
 Plug 'jnurmine/Zenburn'
 Plug 'ajmwagar/vim-deus'
+Plug 'jacoborus/tender.vim'
 
 " css
 Plug 'alexlafroscia/postcss-syntax.vim'
@@ -82,7 +83,7 @@ Plug 'haya14busa/vim-keeppad'
 call plug#end()
 
 " basic settings
-set nonumber
+set number
 syntax on
 set shiftwidth=2
 set tabstop=2
@@ -91,8 +92,12 @@ set autoindent
 set expandtab
 
 " colorscheme
+if (has("termguicolors"))
+ set termguicolors
+endif
+
 set background=dark
-colorscheme seoul256
+colorscheme tender
 
 " reload on save
 augroup reload_vimrc " {
@@ -105,8 +110,7 @@ let g:jsx_ext_required = 0
 
 " linting
 " let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='zenburn'
-let g:airline_solarized_bg='dark'
+let g:airline_theme='tender'
 
 " faster searching
 if executable('ag')
@@ -140,7 +144,7 @@ set wildmenu
 set scrolloff=5
 
 " line number bg color same as bg
-highlight clear LineNr
+" highlight clear LineNr
 
 " incremental search
 set ignorecase
