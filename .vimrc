@@ -71,11 +71,16 @@ Plug 'junegunn/seoul256.vim'
 Plug 'jnurmine/Zenburn'
 Plug 'ajmwagar/vim-deus'
 Plug 'jacoborus/tender.vim'
+Plug 'joshdick/onedark.vim'
 
 " css
-Plug 'alexlafroscia/postcss-syntax.vim'
+" Plug 'alexlafroscia/postcss-syntax.vim'
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/Colorizer'
-
+Plug 'hail2u/vim-css3-syntax'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'rewrite' }
+Plug 'Quramy/vim-js-pretty-template'
+"
 " keep padding with no number
 Plug 'haya14busa/vim-keeppad'
 
@@ -97,7 +102,7 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-colorscheme tender
+colorscheme onedark
 
 " reload on save
 augroup reload_vimrc " {
@@ -110,7 +115,7 @@ let g:jsx_ext_required = 0
 
 " linting
 " let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='tender'
+let g:airline_theme='onedark'
 
 " faster searching
 if executable('ag')
@@ -187,9 +192,9 @@ if executable('ag')
 endif
 
 """ Ale setup (linting)
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
+" let g:ale_fixers = {
+" \   'javascript': ['eslint'],
+" \}
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
 
@@ -201,3 +206,9 @@ let g:airline#extensions#ale#enabled = 1
 let g:tern_map_keys=1
 let g:tern_show_argument_hints='on_hold'
 
+" highlight css in js
+" call jspretmpl#register_tag('styled', 'scss')
+" au BufRead,BufNewFile *.scss set filetype=scss.css
+autocmd FileType scss set iskeyword+=-
+autocmd FileType javascript JsPreTmpl scss
+autocmd FileType javascript.jsx JsPreTmpl scss
