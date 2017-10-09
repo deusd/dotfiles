@@ -128,6 +128,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" easy copy
+vnoremap <C-C> "+y"
+
 " open new tab
 nnoremap <C-t> :tabnew<Return>
 inoremap <C-t> <Esc>:tabnew<Return>
@@ -202,6 +205,9 @@ let g:airline#extensions#ale#enabled = 1
 " TODO add keys for this
 " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_sign_error =   '⚠️ '
+let g:ale_sign_warning = '❌'
 
 " tern setup
 let g:tern_map_keys=1
