@@ -79,7 +79,7 @@ Plug 'morhetz/gruvbox'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'hail2u/vim-css3-syntax'
-" Plug 'styled-components/vim-styled-components', { 'branch': 'rewrite' }
+Plug 'styled-components/vim-styled-components'
 Plug 'Quramy/vim-js-pretty-template'
 "
 " keep padding with no number
@@ -170,7 +170,7 @@ let NERDTreeShowHidden=1
 " let NERDTreeKeepTreeInNewTab=1
 " let g:nerdtree_tabs_open_on_gui_startup=1
 " let g:nerdtree_tabs_open_on_console_startup=1
-map <leader>n :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeToggle<CR>
 
 ""close vim if only nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
