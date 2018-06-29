@@ -242,3 +242,5 @@ endif
 " vim wrap at 72 lines
 au FileType gitcommit set tw=72
 
+" enable mouse mode by default
+set mouse=a
