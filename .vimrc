@@ -1,3 +1,9 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -230,10 +236,14 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" colorscheme setup
-set bg=dark
-colorscheme gruvbox
+if $TERM_PROGRAM =~ "iTerm"
+  " colorscheme setup
+  set bg=dark
+  colorscheme onedark
+endif
 
 " vim wrap at 72 lines
 au FileType gitcommit set tw=72
 
+" enable mouse mode by default
+set mouse=a
