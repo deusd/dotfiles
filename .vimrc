@@ -91,6 +91,12 @@ Plug 'Quramy/vim-js-pretty-template'
 " keep padding with no number
 Plug 'haya14busa/vim-keeppad'
 
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
+
+
 " Initialize plugin system
 call plug#end()
 
@@ -247,3 +253,17 @@ au FileType gitcommit set tw=72
 
 " enable mouse mode by default
 set mouse=a
+
+" supertab and snippets
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips']
+autocmd FileType js UltiSnipsAddFiletypes javascript-es6
+autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
+autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-es6
