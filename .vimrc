@@ -299,7 +299,7 @@ let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips']
+" let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 autocmd FileType js UltiSnipsAddFiletypes javascript-es6
 autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
 autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-es6
